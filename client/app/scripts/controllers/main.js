@@ -8,11 +8,20 @@ angular.module('clientApp')
       'Karma'
     ];
 
+    $scope.photos = [];
 
-    callMethod('getAvailableApiList');
-    // callMethod('actZoom', ['in', 'start']);
-    // callMethod('actZoom', ['out', 'start']);
-    // callMethod('actTakePicture');
+    $scope.takePhoto = function () {
+      // callMethod('getAvailableApiList');
+      callMethod('actTakePicture');
+    };
+
+    $scope.zoomIn = function () {
+      callMethod('actZoom', ['in', 'start']);
+    };
+
+    $scope.zoomOut = function () {
+      callMethod('actZoom', ['out', 'start']);
+    };
 
     function callMethod (method, params) {
       var CAMERA_API_URL = '/camera/api';
@@ -20,7 +29,12 @@ angular.module('clientApp')
       params = params ? '?p=' + JSON.stringify(params) : '';
       var url = CAMERA_API_URL + '/' + method + params;
       $http.get(url).success(function (result) {
-        console.log(result);
+        // console.log(result);
+
+        if (method === 'actTakePicture' && result) {
+          $scope.photos.push(result);
+          // $scope.$apply();
+        }
       });
     }
 

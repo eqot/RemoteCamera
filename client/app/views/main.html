@@ -7,6 +7,14 @@
   <h3 class="text-muted">client</h3>
 </div>
 
+<button ng-click="takePhoto()">Take a photo</button>
+<button ng-click="zoomIn()">Zoom in</button>
+<button ng-click="zoomOut()">Zoom out</button>
+
+<div ng-repeat="photo in photos">
+  <img ng-src="{{photo}}" width="160">
+</div>
+
 <div class="jumbotron">
   <h1>'Allo, 'Allo!</h1>
   <p class="lead">

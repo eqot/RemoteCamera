@@ -4,3 +4,4 @@ client/dist
 client/.tmp
 client/.sass-cache
 client/app/bower_components
+client/app/photos/*.JPG
