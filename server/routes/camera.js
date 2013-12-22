@@ -23,16 +23,15 @@ function callMethod (method, params, callback) {
     pathname: '/sony/camera',
     body: JSON.stringify(input)
   }).when(function (err, ahr, output) {
-    // console.log(arguments);
     if (callback) {
-      callback(output.result);
+      callback(err, output);
     }
   });
 }
 
 function doTakePicture (method, params, res) {
-  callMethod(method, params, function (output) {
-    var url = output[0][0];
+  callMethod(method, params, function (err, output) {
+    var url = output.result[0][0];
     console.log(url);
 
     request.get(url).when(function (err, ahr, data) {
@@ -54,8 +53,15 @@ function doTakePicture (method, params, res) {
 }
 
 function takePicture (method, params, res) {
-  callMethod('getEvent', [false], function (result) {
-    var cameraStatus = result[1].cameraStatus;
+  callMethod('getEvent', [false], function (err, result) {
+    if (err) {
+      console.log(err);
+      // res.send(err);
+      res.send(null);
+      return;
+    }
+
+    var cameraStatus = result.result[1].cameraStatus;
     console.log(cameraStatus);
 
     if (cameraStatus === 'IDLE') {
@@ -75,8 +81,14 @@ exports.call = function(req, res) {
   if (method === 'actTakePicture') {
     takePicture(method, params, res);
   } else {
-    callMethod(method, params, function (output) {
-      res.send(output);
+    callMethod(method, params, function (err, output) {
+      if (err) {
+        console.log(err);
+        res.send(err);
+        return;
+      }
+
+      res.send(output.result);
     });
   }
 
