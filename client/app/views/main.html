@@ -7,6 +7,9 @@
   <h3 class="text-muted">client</h3>
 </div>
 
+<button ng-click="startLiveview()">Start liveview</button>
+<button ng-click="stopLiveview()">Stop liveview</button>
+
 <button ng-click="takePhoto()">Take a photo</button>
 <button ng-click="zoomIn()">Zoom in</button>
 <button ng-click="zoomOut()">Zoom out</button>
@@ -14,6 +17,8 @@
 <div ng-repeat="photo in photos">
   <img ng-src="{{photo}}" width="160">
 </div>
+
+<img ng-src="{{liveview}}" width="640" autoplay></img>
 
 <div class="jumbotron">
   <h1>'Allo, 'Allo!</h1>

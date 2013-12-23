@@ -29,6 +29,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/camera/api/liveview.jpg', camera.liveview);
 app.get('/camera/api/:method/:params', camera.call);
 app.get('/camera/api/:method', camera.call);
 app.get('/camera/api', camera.call);
