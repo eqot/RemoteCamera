@@ -29,10 +29,18 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/camera/api/liveview.jpg', camera.liveview);
-app.get('/camera/api/:method/:params', camera.call);
-app.get('/camera/api/:method', camera.call);
-app.get('/camera/api', camera.call);
+
+app.get('/camera/viewfinder/start', camera.startViewfinder);
+app.get('/camera/viewfinder/stop', camera.stopViewfinder);
+
+app.get('/camera/photos/take', camera.takePhoto);
+
+app.get('/camera/zoom/in', camera.zoomIn);
+app.get('/camera/zoom/out', camera.zoomOut);
+
+app.get('/camera/:method/:params', camera.call);
+app.get('/camera/:method', camera.call);
+app.get('/camera', camera.call);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

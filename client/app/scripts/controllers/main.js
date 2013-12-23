@@ -16,39 +16,34 @@ angular.module('clientApp')
     resize();
 
     $scope.startLiveview = function () {
-      $scope.liveview = '/camera/api/liveview.jpg';
+      $scope.liveview = '/camera/viewfinder/start';
     };
 
     $scope.stopLiveview = function () {
-      callMethod('stopLiveview');
+      call('viewfinder/stop');
     };
 
     $scope.takePhoto = function () {
-      // callMethod('getAvailableApiList');
-      callMethod('actTakePicture');
+      call('photos/take', null, function (result) {
+        $scope.photos.push(result);
+      });
     };
 
     $scope.zoomIn = function () {
-      callMethod('actZoom', ['in', 'start']);
+      call('zoom/in');
     };
 
     $scope.zoomOut = function () {
-      callMethod('actZoom', ['out', 'start']);
+      call('zoom/out');
     };
 
-    function callMethod (method, params, callback) {
-      var CAMERA_API_URL = '/camera/api';
+    function call (method, params, callback) {
+      var CAMERA_API_URL = '/camera';
 
       params = params ? '?p=' + JSON.stringify(params) : '';
       var url = CAMERA_API_URL + '/' + method + params;
       $http.get(url).success(function (result) {
         // console.log(result);
-
-        if (method === 'actTakePicture' && result) {
-          $scope.photos.push(result);
-          // $scope.$apply();
-        }
-
         if (callback) {
           callback(result);
         }
