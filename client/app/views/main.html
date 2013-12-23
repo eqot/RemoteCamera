@@ -12,5 +12,7 @@
 <br><br>
 
 <div ng-repeat="photo in photos">
-  <img ng-src="{{photo}}" width="160">
+  <a ng-href="{{photo}}">
+    <img ng-src="{{photo}}" width="160">
+  </a>
 </div>
