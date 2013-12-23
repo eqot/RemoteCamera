@@ -1,49 +1,16 @@
-<div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
-  </ul>
-  <h3 class="text-muted">client</h3>
-</div>
+<img id="liveview" ng-src="{{liveview}}"></img>
 
-<button ng-click="startLiveview()">Start liveview</button>
-<button ng-click="stopLiveview()">Stop liveview</button>
+<button class="btn btn-default" ng-click="startLiveview()">Start liveview</button>
+<button class="btn btn-default" ng-click="stopLiveview()">Stop liveview</button>
+<br><br>
 
-<button ng-click="takePhoto()">Take a photo</button>
-<button ng-click="zoomIn()">Zoom in</button>
-<button ng-click="zoomOut()">Zoom out</button>
+<button class="btn btn-default" ng-click="zoomIn()">Zoom in</button>
+<button class="btn btn-default" ng-click="zoomOut()">Zoom out</button>
+<br><br>
+
+<button class="btn btn-primary" ng-click="takePhoto()">Take a photo</button>
+<br><br>
 
 <div ng-repeat="photo in photos">
   <img ng-src="{{photo}}" width="160">
-</div>
-
-<img ng-src="{{liveview}}" width="640" autoplay></img>
-
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
-</div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
-
-<div class="footer">
-  <p>♥ from the Yeoman team</p>
 </div>

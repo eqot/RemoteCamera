@@ -1,23 +1,22 @@
 'use strict';
 
 angular.module('clientApp')
-  .controller('MainCtrl', function ($scope, $http, $sce) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-
+  .controller('MainCtrl', function ($scope, $http) {
     $scope.photos = [];
+
+    function resize() {
+      var height = window.innerHeight;
+      $('#liveview').height(height + 'px');
+
+      var width = $('#liveview').width() || (height * 4 / 3);
+      var left = (window.innerWidth - width) / 2;
+      $('#liveview').css('left', left + 'px');
+    }
+    window.onresize = resize;
+    resize();
 
     $scope.startLiveview = function () {
       $scope.liveview = '/camera/api/liveview.jpg';
-
-      // callMethod('startLiveview', null, function (result) {
-      //   var url = result[0];
-      //   console.log(url);
-      //   // $scope.liveview = $sce.trustAsResourceUrl(url);
-      // });
     };
 
     $scope.stopLiveview = function () {
