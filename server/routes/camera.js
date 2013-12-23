@@ -5,7 +5,7 @@ var camera = new SonyCamera('10.0.0.1', 10000, '/sony/camera');
 camera.show();
 
 exports.call = function(req, res) {
-  var method = req.params.method
+  var method = req.params.method;
   var params = req.query.p ? JSON.parse(req.query.p) : null;
   // console.log(method);
   // console.log(params);

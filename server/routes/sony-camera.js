@@ -19,7 +19,7 @@ var request = require('ahr2');
 
     this.publicDir = require('path').join(__dirname, '../public/');
     this.photoDir = 'camera/photos/';
-  }
+  };
 
   SonyCamera.prototype.show = function () {
     console.log(this.url + ':' + this.port + this.path);
@@ -41,7 +41,7 @@ var request = require('ahr2');
         callback(err, rpcRes);
       }
     });
-  }
+  };
 
   SonyCamera.prototype.waitUntilIdle = function (callback) {
     this.call('getEvent', [false], function (err, result) {
@@ -61,8 +61,6 @@ var request = require('ahr2');
   };
 
   SonyCamera.prototype.startViewfinder = function (req, res) {
-    var self = this;
-
     this.call('startLiveview', null, function (err, output) {
       var liveviewUrl = url.parse(output.result[0]);
       // console.log(liveviewUrl);
@@ -83,7 +81,6 @@ var request = require('ahr2');
         var contentType = liveviewRes.headers['content-type'];
         var boundaryBuffer = new Buffer('\n--' + boundary + '\nContent-Type: ' + contentType + '\n\n');
 
-        var state = 0;
         var buffer = new Buffer(0);
 
         res.writeHead(200, {
@@ -171,9 +168,9 @@ var request = require('ahr2');
             res.send(self.photoDir + photoName);
           });
         });
-      })
+      });
     });
-  }
+  };
 
   SonyCamera.prototype.zoomIn = function (req, res) {
     this.call('actZoom', ['in', 'start']);

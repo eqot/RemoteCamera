@@ -1,3 +1,5 @@
+/* global $ */
+
 'use strict';
 
 angular.module('clientApp')

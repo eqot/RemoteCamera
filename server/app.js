@@ -1,3 +1,4 @@
+'use strict';
 
 /**
  * Module dependencies.
@@ -24,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 
 // development only
-if ('development' == app.get('env')) {
+if ('development' === app.get('env')) {
   app.use(express.errorHandler());
 }
 
