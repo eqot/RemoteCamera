@@ -17,7 +17,8 @@ var request = require('ahr2');
       version: '1.0'
     };
 
-    this.publicDir = 'public/';
+    // this.publicDir = 'public/';
+    this.publicDir = require('path').join(__dirname, '../public/');
     this.photoDir = 'camera/photos/';
   }
 
@@ -158,7 +159,7 @@ var request = require('ahr2');
 
       self.call('actTakePicture', null, function (err, output) {
         var url = output.result[0][0];
-        // console.log(url);
+        console.log(url);
 
         request.get(url).when(function (err, ahr, data) {
           var photoName = url.split('?')[0].split('/')[3];

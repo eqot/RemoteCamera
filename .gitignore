@@ -1,7 +1,6 @@
-server/node_modules
-client/node_modules
+node_modules
 client/dist
-client/.tmp
-client/.sass-cache
+.tmp
+.sass-cache
 client/app/bower_components
 client/app/camera/photos/*.JPG

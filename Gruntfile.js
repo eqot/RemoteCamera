@@ -22,7 +22,7 @@ module.exports = function (grunt) {
     yeoman: {
       // configurable paths
       app: require('./bower.json').appPath || 'app',
-      dist: 'dist'
+      dist: require('./bower.json').distPath || 'dist'
     },
 
     // Watches files for changes and runs tasks based on the changed files
@@ -100,7 +100,8 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        '<%= yeoman.app %>/scripts/{,*/}*.js'
+        '<%= yeoman.app %>/scripts/{,*/}*.js',
+        'server/{,*/}*.js'
       ],
       test: {
         options: {

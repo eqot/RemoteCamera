@@ -1,7 +1,11 @@
 {
-  "name": "client",
-  "version": "0.0.0",
-  "dependencies": {},
+  "name": "RemoteCamera",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "3.4.7",
+    "jade": "*",
+    "ahr2": "~2.3.2"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.0",
@@ -45,6 +49,6 @@
     "node": ">=0.8.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "start": "NODE_ENV=development node-dev server/app.js"
   }
 }
