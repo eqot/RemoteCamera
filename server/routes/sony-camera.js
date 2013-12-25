@@ -8,9 +8,9 @@ var request = require('ahr2');
 (function () {
 
   var SonyCamera = function (url, port, path) {
-    this.url = url;
-    this.port = port;
-    this.path = path;
+    this.url = url || '10.0.0.1';
+    this.port = port || 10000;
+    this.path = path || '/sony/camera';
 
     this.rpcReq = {
       id: 1,
