@@ -36,4 +36,4 @@ npm start
 
 ## License
 
-Copyright &copy; 2013-2014 Ikuo Terado. Released under a [MIT license](http://www.opensource.org/licenses/mit-license.php).
+Copyright &copy; 2013-2014 Ikuo Terado. Released under the [MIT license](http://www.opensource.org/licenses/mit-license.php).
