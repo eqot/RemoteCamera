@@ -23,6 +23,7 @@ Client-side code is a main part which has UI widgets for controlling Sony camera
 
 ```
 git clone https://github.com/eqot/RemoteCamera.git
+cd RemoteCamera
 npm install && bower install
 grunt build
 npm start
